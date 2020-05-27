@@ -21,6 +21,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "convert.It2", "..\..\..\Doc
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "59724"
+		SlnRelativePath = "..\..\..\Documents\Studies\Studies\convert.It2\"
 	EndProjectSection
 EndProject
 Global

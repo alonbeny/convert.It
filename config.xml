@@ -1,0 +1,42 @@
+<?xml version=“1.0” encoding=“utf-8”?>
+<Distance>
+    <symbol name="Centimeter"   value="[cm]"    />
+    <symbol name="Meter"        value="[m]"     />
+    <symbol name="Kilometer"    value="[m]"     />
+    <symbol name="Mile"         value="[ml]"    />
+    <symbol name="Yard"         value="[y]"     />
+    <symbol name="Foot"         value="[f]"    />
+    <symbol name="Inch"         value="[i]"     />
+
+    <base name="Centimeter" from ="Kilomter"    ratio="100000"/>
+    <base name="Centimeter" from ="Meter"       ratio="100"                />
+    <base name="Centimeter" from ="Mile"        ratio="160934"             />
+    <base name="Centimeter" from ="Yard"        ratio="91.44"              />
+    <base name="Centimeter" from ="Foot"        ratio="30.48"              />
+    <base name="Centimeter" from ="Inch"        ratio="2.54"               />
+
+    <base name="Meter"      from ="Kilomter"    ratio="1000"               />
+    <base name="Meter"      from ="Centimeter"  ratio="100"                />
+    <base name="Meter"      from ="Mile"        ratio="1609.34"            />
+    <base name="Meter"      from ="Yard"        ratio="9.144"              />
+    <base name="Meter"      from ="Foot"        ratio="0.3048"             />
+    <base name="Meter"      from ="Inch"        ratio="0.0254"             />
+
+    <base name="Kilomter"      from ="Meter"       ratio="0.001"           />
+    <base name="Kilomter"      from ="Centimeter"  ratio="0.00001"         />
+    <base name="Kilomter"      from ="Mile"        ratio="1.60934"         />
+    <base name="Kilomter"      from ="Yard"        ratio="0.0009144"       />
+    <base name="Kilomter"      from ="Foot"        ratio="0.0003048"       />
+    <base name="Kilomter"      from ="Inch"        ratio="0.0000254"       />
+
+    <base name="Mile"         from ="Meter"       ratio="0.00062137119223733"           />
+    <base name="Mile"         from ="Centimeter"  ratio="0.0000062137119223733"         />
+    <base name="Mile"         from ="Kilometer"   ratio="0.62137119223733"         />
+    <base name="Mile"         from ="Yard"        ratio="0.0000062137119223733"       />
+    <base name="Mile"         from ="Foot"        ratio="0.00018939393939394"       />
+    <base name="Mile"         from ="Inch"        ratio="0.000015782828282828"       />
+</Distance>
+
+<Temparture>
+
+</Temparture>
