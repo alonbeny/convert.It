@@ -27,7 +27,8 @@ function readUnitsFromXML(xml)
         var unit = {
             name: element.getElementsByTagName("name")[0].childNodes[0].nodeValue,
             symbol: element.getElementsByTagName("symbol")[0].childNodes[0].nodeValue,
-            ratio: Number(element.getElementsByTagName("ratio")[0].childNodes[0].nodeValue)
+            ratio: Number(element.getElementsByTagName("ratio")[0].childNodes[0].nodeValue),
+            offset: Number(element.getElementsByTagName("offset")[0].childNodes[0].nodeValue)
         }
         unitList.push(unit);
     }
@@ -79,13 +80,13 @@ function setToUnit(unitName)
 }
 
 function convertIt() {
-    var userInput = document.getElementById("value").value;
+    var userInput = Number(document.getElementById("value").value);
     var calcResult = convert(fromUnit, toUnit, userInput);
     document.getElementById("result").value = calcResult;
 
 }
 
 function convert(fromUnit, toUnit, userInput) {
-    var res = userInput * fromUnit.ratio / toUnit.ratio;
+    var res = (userInput-fromUnit.offset) * fromUnit.ratio / toUnit.ratio + toUnit.offset;
     return res;
 }

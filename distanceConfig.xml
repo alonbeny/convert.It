@@ -5,6 +5,7 @@
       <name>Centimeter</name>
       <symbol>cm</symbol>
       <ratio>1</ratio>
+      <offset>0</offset>
     </unit>
 
   <!--1 meter = 100 centimeters-->
@@ -12,6 +13,7 @@
       <name>Meter</name>
       <symbol>m</symbol>
       <ratio>100</ratio>
+      <offset>0</offset>
     </unit>
 
   <!--1 meter = 0.1 centimeters-->
@@ -19,6 +21,7 @@
     <name>Milimeter</name>
     <symbol>mm</symbol>
     <ratio>0.1</ratio>
+    <offset>0</offset>
   </unit>
 
   <!--1 feet = 30.48 centimeters-->
@@ -26,6 +29,7 @@
     <name>Feet</name>
     <symbol>ft</symbol>
     <ratio>30.48</ratio>
+    <offset>0</offset>
   </unit>
 
   <!--1 yard = 91.44 centimeters-->
@@ -33,6 +37,7 @@
     <name>Yard</name>
     <symbol>yd</symbol>
     <ratio>91.44</ratio>
+    <offset>0</offset>
   </unit>
   
   <!--1 inch = 2.54 centimeters-->
@@ -40,6 +45,7 @@
     <name>Inch</name>
     <symbol>in</symbol>
     <ratio>2.54</ratio>
+    <offset>0</offset>
   </unit>
 
   <!--1 km = 100000 cm-->
@@ -47,6 +53,7 @@
     <name>Kilometer</name>
     <symbol>km</symbol>
     <ratio>100000</ratio>
+    <offset>0</offset>
   </unit>
 
   <!--1 mile = 100000 cm-->
@@ -54,6 +61,7 @@
     <name>Mile</name>
     <symbol>mi</symbol>
     <ratio>160934.4</ratio>
+    <offset>0</offset>
   </unit>
   
 </units>
