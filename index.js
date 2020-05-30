@@ -27,8 +27,8 @@ function readUnitsFromXML(xml)
         var unit = {
             name: element.getElementsByTagName("name")[0].childNodes[0].nodeValue,
             symbol: element.getElementsByTagName("symbol")[0].childNodes[0].nodeValue,
-            ratio: Number(element.getElementsByTagName("ratio")[0].childNodes[0].nodeValue),
-            offset: Number(element.getElementsByTagName("offset")[0].childNodes[0].nodeValue)
+            ratio: parseFloat(element.getElementsByTagName("ratio")[0].childNodes[0].nodeValue),
+            offset: parseFloat(element.getElementsByTagName("offset")[0].childNodes[0].nodeValue)
         }
         unitList.push(unit);
     }

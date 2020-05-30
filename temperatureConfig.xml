@@ -13,4 +13,12 @@
     <ratio>0.5555555556</ratio>
     <offset>32</offset>
   </unit>
+
+  <unit>
+    <name>Kelvin</name>
+    <symbol>K</symbol>
+    <ratio>1</ratio>
+    <offset>273.15</offset>
+  </unit>
+  
  </units>
