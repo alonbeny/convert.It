@@ -20,5 +20,40 @@
     <symbol>mm</symbol>
     <ratio>0.1</ratio>
   </unit>
+
+  <!--1 feet = 30.48 centimeters-->
+  <unit>
+    <name>Feet</name>
+    <symbol>ft</symbol>
+    <ratio>30.48</ratio>
+  </unit>
+
+  <!--1 yard = 91.44 centimeters-->
+  <unit>
+    <name>Yard</name>
+    <symbol>yd</symbol>
+    <ratio>91.44</ratio>
+  </unit>
+  
+  <!--1 inch = 2.54 centimeters-->
+  <unit>
+    <name>Inch</name>
+    <symbol>in</symbol>
+    <ratio>2.54</ratio>
+  </unit>
+
+  <!--1 km = 100000 cm-->
+  <unit>
+    <name>Kilometer</name>
+    <symbol>km</symbol>
+    <ratio>100000</ratio>
+  </unit>
+
+  <!--1 mile = 100000 cm-->
+  <unit>
+    <name>Mile</name>
+    <symbol>mi</symbol>
+    <ratio>160934.4</ratio>
+  </unit>
   
 </units>

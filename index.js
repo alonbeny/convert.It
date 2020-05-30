@@ -38,8 +38,8 @@ function readUnitsFromXML(xml)
     createToDropdownMenu("to");
     createToDropdownMenu("from");
 
-    fromUnit = unitList[0];
-    toUnit = unitList[1];
+    setFromUnit(unitList[0].name);
+    setToUnit(unitList[1].name);
 }
 
 function createToDropdownMenu(elementId) {
@@ -67,13 +67,15 @@ function searchUnitByName(unitName) {
     return unitList.find((u) => (u.name == unitName));
 }
 
-function setToUnit(unitName)
-{
+function setFromUnit(unitName) {
     fromUnit = searchUnitByName(unitName);
+    document.getElementById("from-unit-title").innerHTML = "From: " + fromUnit.name + " [" + fromUnit.symbol + "]";
 }
 
-function setFromUnit(unitName) {
+function setToUnit(unitName)
+{
     toUnit = searchUnitByName(unitName);
+    document.getElementById("to-unit-title").innerHTML = "To: " + toUnit.name + " [" + toUnit.symbol + "]";
 }
 
 function convertIt() {
