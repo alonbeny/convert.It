@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
 <units>
   <!--base unit of distance is centimeter-->
-    <unit>
-      <name>Centimeter</name>
-      <symbol>cm</symbol>
-      <ratio>1</ratio>
-      <offset>0</offset>
-    </unit>
+  <unit>
+    <name>Centimeter</name>
+    <symbol>cm</symbol>
+    <ratio>1</ratio>
+    <offset>0</offset>
+  </unit>
 
   <!--1 meter = 100 centimeters-->
-    <unit>
-      <name>Meter</name>
-      <symbol>m</symbol>
-      <ratio>100</ratio>
-      <offset>0</offset>
-    </unit>
+  <unit>
+    <name>Meter</name>
+    <symbol>m</symbol>
+    <ratio>100</ratio>
+    <offset>0</offset>
+  </unit>
 
   <!--1 meter = 0.1 centimeters-->
   <unit>
@@ -39,7 +39,7 @@
     <ratio>91.44</ratio>
     <offset>0</offset>
   </unit>
-  
+
   <!--1 inch = 2.54 centimeters-->
   <unit>
     <name>Inch</name>
@@ -63,5 +63,5 @@
     <ratio>160934.4</ratio>
     <offset>0</offset>
   </unit>
-  
+
 </units>

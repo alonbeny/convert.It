@@ -3,42 +3,42 @@
   <unit>
     <name>Bit</name>
     <symbol>b</symbol>
-    <ratio>1</ratio>
+    <ratio>0.0001220703125‬</ratio>
     <offset>0</offset>
   </unit>
 
   <unit>
     <name>Byte</name>
     <symbol>B</symbol>
-    <ratio>8</ratio>
+    <ratio>0.0009765625‬</ratio>
     <offset>0</offset>
   </unit>
 
   <unit>
     <name>Kilobit</name>
     <symbol>Kb</symbol>
-    <ratio>1024</ratio>
+    <ratio>0.125</ratio>
     <offset>0</offset>
   </unit>
 
   <unit>
     <name>Kilobyte</name>
     <symbol>KB</symbol>
-    <ratio>8192</ratio>
+    <ratio>1</ratio>
     <offset>0</offset>
   </unit>
 
   <unit>
     <name>Megabyte</name>
     <symbol>MB</symbol>
-    <ratio>8388608‬</ratio>
+    <ratio>1024‬</ratio>
     <offset>0</offset>
   </unit>
 
   <unit>
     <name>Gigabyte</name>
     <symbol>GB</symbol>
-    <ratio>8589934592‬</ratio>
+    <ratio>1048576‬‬</ratio>
     <offset>0</offset>
   </unit>
 
