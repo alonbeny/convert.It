@@ -1,5 +1,4 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Units>
   <Distance>
     <symbol name="Centimeter"   value="[cm]"    />
     <symbol name="Meter"        value="[m]"     />
@@ -17,8 +16,3 @@
     <base name="Centimeter" from ="Inch"        ratio="2.54"               />
 
    </Distance>
-
-  <Temparture>
-
-  </Temparture>
-</Units>

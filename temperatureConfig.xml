@@ -1,0 +1,8 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Temperature>
+  <symbol name="Celsius"           value="[°C]"    />
+  <symbol name="Fahrenheit"        value="[°F]"     />
+ 
+  <base name="Fahrenheit" from ="Celsius"    ratio="0.5555555556"/>
+
+</Temperature>
