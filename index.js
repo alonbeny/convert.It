@@ -85,17 +85,10 @@ function convertIt() {
     document.getElementById("result").value = calcResult;
 
     // Handle cookies
-    var historyString = getCookie("history");
-    var history;
-    try {
-        history = JSON.parse(historyString);
-    }
-    catch (e) {
-        history = [];
-    }
+    var history = getHistory();
 
     var current = {
-        catagory: "",
+        category: category,
         from: userInput,
         fromUnit: "[" + toUnit.symbol + "]",
         to: calcResult,
@@ -106,9 +99,6 @@ function convertIt() {
     history.unshift(current);
     history = history.slice(0, 20);
     setCookie("history", JSON.stringify(history), 365);
-
-    //for testing only
-    alert(JSON.stringify(getCookie("history")));
 }
 
 function convert(fromUnit, toUnit, userInput) {
@@ -137,3 +127,54 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function getHistory() {
+    var historyString = getCookie("history");
+    var history;
+    try {
+        history = JSON.parse(historyString);
+    }
+    catch (e) {
+        history = [];
+    }
+    return history;
+}
+
+function renderHistoryTable() {
+    var row = document.getElementById("history-row");
+    var history = getHistory();
+
+    // hide history row if no history found
+    if (history.length == 0) {
+        row.style.display = "none";
+    }
+
+    //else, build row for each history element
+    else {
+        var frag = document.createDocumentFragment();
+        for (i = 0; i < history.length; i++) {
+            hisElement = history[i];
+            var tr = document.createElement("tr");
+            var col1 = document.createElement("td");
+            col1.innerHTML ="<strong>" + hisElement.category + "</strong>";
+            var col2 = document.createElement("td");
+            col2.innerHTML = hisElement.from;
+            var col3 = document.createElement("td");
+            col3.innerHTML = hisElement.fromUnit;
+            var col4 = document.createElement("td");
+            col4.innerHTML = hisElement.to;
+            var col5 = document.createElement("td");
+            col5.innerHTML = hisElement.toUnit;
+
+            tr.appendChild(col1);
+            tr.appendChild(col2);
+            tr.appendChild(col3);
+            tr.appendChild(col4);
+            tr.appendChild(col5);
+
+            frag.appendChild(tr);
+        }
+        document.getElementById("history-table-content").appendChild(frag);
+    }
+}
+
