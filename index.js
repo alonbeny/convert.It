@@ -22,13 +22,13 @@ function readUnitsFromXML(xml)
     xmlDoc = parser.parseFromString(xml.responseText, "text/xml");
     let unitsXML = xmlDoc.getElementsByTagName("unit");
 
-    for (var element of unitsXML)
+    for (var element of unitsXML) 
     {
         var unit = {
             name: element.getElementsByTagName("name")[0].childNodes[0].nodeValue,
             symbol: element.getElementsByTagName("symbol")[0].childNodes[0].nodeValue,
-            ratio: Number(element.getElementsByTagName("ratio")[0].childNodes[0].nodeValue),
-            offset: Number(element.getElementsByTagName("offset")[0].childNodes[0].nodeValue)
+            ratio: parseFloat(element.getElementsByTagName("ratio")[0].childNodes[0].nodeValue),
+            offset: parseFloat(element.getElementsByTagName("offset")[0].childNodes[0].nodeValue)
         }
         unitList.push(unit);
     }
@@ -80,13 +80,101 @@ function setToUnit(unitName)
 }
 
 function convertIt() {
-    var userInput = Number(document.getElementById("value").value);
+    var userInput = parseFloat(document.getElementById("value").value);
     var calcResult = convert(fromUnit, toUnit, userInput);
     document.getElementById("result").value = calcResult;
 
+    // Handle cookies
+    var history = getHistory();
+
+    var current = {
+        category: category,
+        from: userInput,
+        fromUnit: "[" + fromUnit.symbol + "]",
+        to: calcResult,
+        toUnit: "[" + toUnit.symbol + "]"
+    };
+
+    // unshift adds elements to the start of an array
+    history.unshift(current);
+    history = history.slice(0, 10);
+    setCookie("history", JSON.stringify(history), 365);
 }
 
 function convert(fromUnit, toUnit, userInput) {
     var res = (userInput-fromUnit.offset) * fromUnit.ratio / toUnit.ratio + toUnit.offset;
     return res;
 }
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function getHistory() {
+    var historyString = getCookie("history");
+    var history;
+    try {
+        history = JSON.parse(historyString);
+    }
+    catch (e) {
+        history = [];
+    }
+    return history;
+}
+
+function renderHistoryTable() {
+    var row = document.getElementById("history-row");
+    var history = getHistory();
+
+    // hide history row if no history found
+    if (history.length == 0) {
+        row.style.display = "none";
+    }
+
+    //else, build row for each history element
+    else {
+        var frag = document.createDocumentFragment();
+        for (i = 0; i < history.length; i++) {
+            hisElement = history[i];
+            var tr = document.createElement("tr");
+            var col1 = document.createElement("td");
+            col1.innerHTML ="<strong>" + hisElement.category + "</strong>";
+            var col2 = document.createElement("td");
+            col2.innerHTML = hisElement.from;
+            var col3 = document.createElement("td");
+            col3.innerHTML = hisElement.fromUnit;
+            var col4 = document.createElement("td");
+            col4.innerHTML = hisElement.to;
+            var col5 = document.createElement("td");
+            col5.innerHTML = hisElement.toUnit;
+
+            tr.appendChild(col1);
+            tr.appendChild(col2);
+            tr.appendChild(col3);
+            tr.appendChild(col4);
+            tr.appendChild(col5);
+
+            frag.appendChild(tr);
+        }
+        document.getElementById("history-table-content").appendChild(frag);
+    }
+}
+
