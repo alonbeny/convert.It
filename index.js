@@ -90,14 +90,14 @@ function convertIt() {
     var current = {
         category: category,
         from: userInput,
-        fromUnit: "[" + toUnit.symbol + "]",
+        fromUnit: "[" + fromUnit.symbol + "]",
         to: calcResult,
         toUnit: "[" + toUnit.symbol + "]"
     };
 
     // unshift adds elements to the start of an array
     history.unshift(current);
-    history = history.slice(0, 20);
+    history = history.slice(0, 10);
     setCookie("history", JSON.stringify(history), 365);
 }
 
