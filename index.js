@@ -22,7 +22,7 @@ function readUnitsFromXML(xml)
     xmlDoc = parser.parseFromString(xml.responseText, "text/xml");
     let unitsXML = xmlDoc.getElementsByTagName("unit");
 
-    for (var element of unitsXML)
+    for (var element of unitsXML) 
     {
         var unit = {
             name: element.getElementsByTagName("name")[0].childNodes[0].nodeValue,
@@ -80,13 +80,60 @@ function setToUnit(unitName)
 }
 
 function convertIt() {
-    var userInput = Number(document.getElementById("value").value);
+    var userInput = parseFloat(document.getElementById("value").value);
     var calcResult = convert(fromUnit, toUnit, userInput);
     document.getElementById("result").value = calcResult;
 
+    // Handle cookies
+    var historyString = getCookie("history");
+    var history;
+    try {
+        history = JSON.parse(historyString);
+    }
+    catch (e) {
+        history = [];
+    }
+
+    var current = {
+        catagory: "",
+        from: userInput,
+        fromUnit: "[" + toUnit.symbol + "]",
+        to: calcResult,
+        toUnit: "[" + toUnit.symbol + "]"
+    };
+
+    // unshift adds elements to the start of an array
+    history.unshift(current);
+    history = history.slice(0, 20);
+    setCookie("history", JSON.stringify(history), 365);
+
+    //for testing only
+    alert(JSON.stringify(getCookie("history")));
 }
 
 function convert(fromUnit, toUnit, userInput) {
     var res = (userInput-fromUnit.offset) * fromUnit.ratio / toUnit.ratio + toUnit.offset;
     return res;
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
