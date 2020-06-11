@@ -14,6 +14,9 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script type="text/javascript" src="index.js"></script>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
 </head>
 
 <body id="page-top">
@@ -73,12 +76,10 @@
             <div id="content">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
-
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div id="rows" class="container-fluid">
-
                     <div id="Row1" class="row">
                         <!-- Content Column: From-->
                         <div class="col-xl-4 mb-1">
@@ -105,17 +106,16 @@
                                             Choose Unit
                                         </a>
                                         <div id="to" class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
-
                                         </div>
                                     </li>
                                 </ul>
                             </nav>
+                            <!--End of row-->
                         </div>
-                        <!--End of row-->
                     </div>
                     <div id="Row2" class="row">
-                        <div class="col-xl-1 mb-1">
-                            <button id="addButton" type="button" class="btn btn-primary" disabled="true">+</button>
+                        <div class="col-s-1 mb-1">
+                            <button id="addButton" type="button" class="btn btn-primary" onclick="addNewConversionRow()">+</button>
                         </div>
                         <div class="col-xl-3 mb-1">
                             <input id="value" type="number" class="form-control" placeholder="Value">
@@ -126,9 +126,9 @@
                     </div>
                     <!--End of row-->
                 </div>
-
                 <div id="Row3" class="row">
-                    <div class="col-xl-9 mb-1"></div>
+                    <div class="col-xl-9 mb-1">
+                    </div>
                     <div class="col-xl-3 mb-1">
                         <button type="button" class="btn btn-primary" onclick="convertIt()">Convert It</button>
                     </div>
@@ -148,14 +148,12 @@
         </div>
     </footer>
     <!-- End of Footer -->
-    </div>
     <!-- End of Content Wrapper -->
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -168,7 +166,6 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-
     <script>
         loadUnitConfigFromXML("byteConfig.xml");
         var category = "Computing Units";

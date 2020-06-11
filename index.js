@@ -80,25 +80,32 @@ function setToUnit(unitName)
 }
 
 function convertIt() {
-    var userInput = parseFloat(document.getElementById("value").value);
-    var calcResult = convert(fromUnit, toUnit, userInput);
-    document.getElementById("result").value = calcResult;
 
-    // Handle cookies
-    var history = getHistory();
+    var inputResult = document.getElementsByClassName('form-control');
+    for (i = 0; i < inputResult.length; i += 2) {
+        var input = inputResult[i];
+        var userInput = parseFloat(input.value);
+        // Hack for decimal point
+        var calcResult = +convert(fromUnit, toUnit, userInput).toFixed(5);
+        var valuev = inputResult[i + 1];
+        valuev.value = calcResult;
 
-    var current = {
-        category: category,
-        from: userInput,
-        fromUnit: "[" + fromUnit.symbol + "]",
-        to: calcResult,
-        toUnit: "[" + toUnit.symbol + "]"
-    };
+        // Handle cookies
+        var history = getHistory();
 
-    // unshift adds elements to the start of an array
-    history.unshift(current);
-    history = history.slice(0, 10);
-    setCookie("history", JSON.stringify(history), 365);
+        var current = {
+            category: category,
+            from: userInput,
+            fromUnit: "[" + fromUnit.symbol + "]",
+            to: calcResult,
+            toUnit: "[" + toUnit.symbol + "]"
+        };
+
+        // unshift adds elements to the start of an array
+        history.unshift(current);
+        history = history.slice(0, 10);
+        setCookie("history", JSON.stringify(history), 365);
+    }
 }
 
 function convert(fromUnit, toUnit, userInput) {
@@ -178,3 +185,31 @@ function renderHistoryTable() {
     }
 }
 
+function addNewConversionRow() {
+    var currentRow = document.getElementById('Row2');
+    var clonedRow = currentRow.cloneNode(true);
+    var formControlFields = clonedRow.getElementsByClassName('form-control');
+    for (i = 0; i < formControlFields.length; i++) {
+        formControlFields[i].value = "";
+    }
+    document.getElementById("rows").appendChild(clonedRow);
+
+    //hide irrelevant buttons
+    var buttons = getElementsById("addButton");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+    }
+    buttons[buttons.length - 1].disabled = false;
+
+}
+
+function getElementsById(elementID) {
+    var elementCollection = new Array();
+    var allElements = document.getElementsByTagName("*");
+    for (i = 0; i < allElements.length; i++) {
+        if (allElements[i].id == elementID)
+            elementCollection.push(allElements[i]);
+
+    }
+    return elementCollection;
+}
