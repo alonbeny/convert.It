@@ -140,11 +140,48 @@
                     </div>
                     <!--End of row-->
                 </div>
+                <div id="Row4" class="row">
+                    <div class="col-xl-9 mb-1">
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Units</button>
+                    </div>
+                    <!--End of row-->
+                </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
         </div>
     </div>
+
+    <!--Modal Code-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 style="margin-left:0; margin-right:auto" class="modal-title">New Unit</h4>
+                    <button type="button" class="close" data-dismiss="modal" onclick="clearModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <label>Unit Name:</label>
+                    <input id="new-unit-name" type="text" class="form-control" placeholder="Name">
+                    <label>Unit Symbol:</label>
+                    <input id="new-unit-symbol" type="text" class="form-control" placeholder="Symbol">
+                    <label>Unit Ratio, ratio = 1 in centimeter, gram, celsius & byte:</label>
+                    <input id="new-unit-ratio" type="number" class="form-control" placeholder="Ratio" value="1">
+                    <label>Unit Offset:</label>
+                    <input id="new-unit-offset" type="number" class="form-control" placeholder="Offset" value="0">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addUnitFromModal()">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -173,8 +210,9 @@
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script>
-        loadUnitConfigFromXML("temperatureConfig.xml");
+        var xmlFilename = "temperatureConfig.xml";
         var category = "Temperature";
+        loadUnitConfigFromXML(xmlFilename);
     </script>
 </body>
 

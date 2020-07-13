@@ -32,6 +32,10 @@ function readUnitsFromXML(xml)
         }
         unitList.push(unit);
     }
+
+    // Add user custom units
+    unitList = unitList.concat(getCustomUnits(category));
+
     // Sorting units by ratio
     unitList.sort((u1, u2) => { return u1.ratio - u2.ratio });
 
@@ -215,4 +219,44 @@ function getElementsById(elementID) {
 
     }
     return elementCollection;
+}
+
+function addUnitFromModal() {
+    // Parse unit from user input
+    var unit = {
+        name: document.getElementById("new-unit-name").value,
+        symbol: document.getElementById("new-unit-symbol").value,
+        ratio: parseFloat(document.getElementById("new-unit-ratio").value),
+        offset: parseFloat(document.getElementById("new-unit-offset").value)
+    }
+    // Add Unit to cookies
+    units = getCustomUnits(category);
+    units.push(unit);
+    setCookie(category, JSON.stringify(units), 365);
+
+    // Refresh local units
+    loadUnitConfigFromXML(xmlFilename);
+
+    // Cleanup
+    location.reload(true);
+}
+
+function clearModal() {
+    document.getElementById("new-unit-name").value = "";
+    document.getElementById("new-unit-symbol").value = "";
+    document.getElementById("new-unit-ratio").value = 1;
+    document.getElementById("new-unit-offset").value = 0;
+}
+
+function getCustomUnits(category)
+{
+    var unitString = getCookie(category);
+    var units;
+    try {
+        units = JSON.parse(unitString);
+    }
+    catch (e) {
+        units = [];
+    }
+    return units;
 }
