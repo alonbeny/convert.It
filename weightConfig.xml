@@ -1,0 +1,44 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<units>
+  <unit>
+    <name>Milligram</name>
+    <symbol>mg</symbol>
+    <ratio>0.001</ratio>
+    <offset>0</offset>
+  </unit>
+
+  <unit>
+    <name>Gram</name>
+    <symbol>g</symbol>
+    <ratio>1</ratio>
+    <offset>0</offset>
+  </unit>
+
+  <unit>
+    <name>Kilogram</name>
+    <symbol>kg</symbol>
+    <ratio>1000</ratio>
+    <offset>0</offset>
+  </unit>
+
+  <unit>
+    <name>Tonne</name>
+    <symbol>kg</symbol>
+    <ratio>1000000</ratio>
+    <offset>0</offset>
+  </unit>
+
+  <unit>
+    <name>Ounce</name>
+    <symbol>oz</symbol>
+    <ratio>28.3</ratio>
+    <offset>0</offset>
+  </unit>
+
+  <unit>
+    <name>Pound</name>
+    <symbol>lb</symbol>
+    <ratio>452.8</ratio>
+    <offset>0</offset>
+  </unit>
+</units>

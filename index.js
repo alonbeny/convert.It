@@ -84,27 +84,30 @@ function convertIt() {
     var inputResult = document.getElementsByClassName('form-control');
     for (i = 0; i < inputResult.length; i += 2) {
         var input = inputResult[i];
-        var userInput = parseFloat(input.value);
-        // Hack for decimal point
-        var calcResult = +convert(fromUnit, toUnit, userInput).toFixed(5);
-        var valuev = inputResult[i + 1];
-        valuev.value = calcResult;
+        if(input.value != "")
+        {
+            var userInput = parseFloat(input.value);
+            // Hack for decimal point
+            var calcResult = +convert(fromUnit, toUnit, userInput).toFixed(5);
+            var valuev = inputResult[i + 1];
+            valuev.value = calcResult;
 
-        // Handle cookies
-        var history = getHistory();
+            // Handle cookies
+            var history = getHistory();
 
-        var current = {
-            category: category,
-            from: userInput,
-            fromUnit: "[" + fromUnit.symbol + "]",
-            to: calcResult,
-            toUnit: "[" + toUnit.symbol + "]"
-        };
+            var current = {
+                category: category,
+                from: userInput,
+                fromUnit: "[" + fromUnit.symbol + "]",
+                to: calcResult,
+                toUnit: "[" + toUnit.symbol + "]"
+            };
 
-        // unshift adds elements to the start of an array
-        history.unshift(current);
-        history = history.slice(0, 10);
-        setCookie("history", JSON.stringify(history), 365);
+            // unshift adds elements to the start of an array
+            history.unshift(current);
+            history = history.slice(0, 10);
+            setCookie("history", JSON.stringify(history), 365);
+        }
     }
 }
 

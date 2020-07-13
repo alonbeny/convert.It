@@ -14,7 +14,9 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script type="text/javascript" src="index.js"></script>
-
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
 </head>
 
 <body id="page-top">
@@ -80,113 +82,84 @@
             <div id="content">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
-
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <div id="history-row" class="row">
-                        <!-- Content Column -->
-                        <div class="col-xl-12 mb-3">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">My History</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div>
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Category</th>
-                                                    <th>From</th>
-                                                    <th>Unit</th>
-                                                    <th>To</th>
-                                                    <th>Unit</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="history-table-content">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                <div id="rows" class="container-fluid">
+                    <div id="Row1" class="row">
+                        <!-- Content Column: From-->
+                        <div class="col-xl-4 mb-1">
+                            <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                                <a id="from-unit-title" class="navbar-brand" href="#">From:</a>
+                                <ul class="navbar-nav ml-auto">
+                                    <li id="fromDropdown" class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Choose Unit
+                                        </a>
+                                        <div id="from" class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Content Column: To-->
+                        <div class="col-xl-4 mb-1">
+                            <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                                <a id="to-unit-title" class="navbar-brand" href="#">To:</a>
+                                <ul class="navbar-nav ml-auto">
+                                    <li id="toDropdown" class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Choose Unit
+                                        </a>
+                                        <div id="to" class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!--End of row-->
                         </div>
                     </div>
-                    <div class="row">
-                        <!-- Content Column -->
-                        <div class="col-xl-4 mb-3">
-
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Convert Distance</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_journey_lwlj.svg" alt="">
-                                    </div>
-                                </div>
-                            </div>
+                    <div id="Row2" class="row">
+                        <div class="col-s-1 mb-1">
+                            <button id="addButton" type="button" class="btn btn-primary" onclick="addNewConversionRow()">+</button>
                         </div>
-
-                        <!-- Content Column -->
-                        <div class="col-xl-4 mb-3">
-
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Convert Temperature</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_camping_noc8.svg" alt="">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-xl-3 mb-1">
+                            <input id="value" type="number" class="form-control" placeholder="Value">
                         </div>
-
-                        <!-- Content Column -->
-                        <div class="col-xl-4 mb-3">
-
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Convert Computing Units</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_programming_2svr.svg" alt="">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-xl-2 mb-1">
+                            <input id="result" type="number" class="form-control" placeholder="Result" disabled="true">
                         </div>
-
-                        <!--End of row-->
                     </div>
-                    <!--End of column-->
+                    <!--End of row-->
+                </div>
+                <div id="Row3" class="row">
+                    <div class="col-xl-9 mb-1">
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <button type="button" class="btn btn-primary" onclick="convertIt()">Convert It</button>
+                    </div>
+                    <!--End of row-->
                 </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Convert.It 2020</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
         </div>
-        <!-- End of Content Wrapper -->
     </div>
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Convert.It 2020</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+    <!-- End of Content Wrapper -->
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -200,7 +173,8 @@
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script>
-        renderHistoryTable();
+        loadUnitConfigFromXML("weightConfig.xml");
+        var category = "Weight";
     </script>
 </body>
 
